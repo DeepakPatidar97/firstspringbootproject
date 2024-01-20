@@ -1,10 +1,13 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <HTML>
 <head>
-<title>Login Page</title>
+<link href="webjars/bootstrap/5.3.2/css/bootstrap.min.css"
+	rel="stylesheet">
+<title>Dashbord</title>
 </head>
 <body>
 	<h1>Welcome ${username}</h1>
+	<hr>
 	<h2>your contacts :</h2>
 	<table>
 		<thead>
@@ -27,7 +30,9 @@
 		</tbody>
 
 	</table>
-
-
+	<script src="webjars/bootstrap/5.3.2/js/bootstrap.min.js"
+		type="text/javascript"></script>
+	<script src="webjars/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
 </body>
+
 </HTML>
