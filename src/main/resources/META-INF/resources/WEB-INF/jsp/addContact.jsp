@@ -1,16 +1,7 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<HTML>
-<head>
-<link href="webjars/bootstrap/5.3.2/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="webjars/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.standalone.min.css"
-	rel="stylesheet">
-<title>Add Contact</title>
-</head>
-<body>
-	<div class="container">
+
+<%@ include file="common/navigation.jspf" %>
+<%@ include file="common/header.jspf" %>
+<div class="container ">
 		<h1>Enter Your Contact Details</h1>
 		<form:form method="post" action="add-contacts"
 			modelAttribute="contact">
@@ -53,12 +44,9 @@
 		</form:form>
 
 	</div>
-	<script src="webjars/bootstrap/5.3.2/js/bootstrap.min.js"
-		type="text/javascript"></script>
-	<script src="webjars/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
-	<script
-		src="webjars/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-	
+
+
+<%@ include file="common/footer.jspf" %>
 	<script type="text/javascript">
 		$('#date').datepicker({
 			format : 'yyyy-mm-dd'

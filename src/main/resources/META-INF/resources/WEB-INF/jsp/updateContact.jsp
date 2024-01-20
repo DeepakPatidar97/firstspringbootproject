@@ -1,12 +1,6 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<HTML>
-<head>
-<link href="webjars/bootstrap/5.3.2/css/bootstrap.min.css"
-	rel="stylesheet">
-<title>update Contact</title>
-</head>
-<body>
+
+<%@ include file="common/navigation.jspf" %>
+<%@ include file="common/header.jspf" %>
 	<div class="container">
 		<h1>Enter Your Contact Details</h1>
 		<form:form method="post" action="update-contact"
@@ -49,9 +43,7 @@
 		</form:form>
 
 	</div>
-	<script src="webjars/bootstrap/5.3.2/js/bootstrap.min.js"
-		type="text/javascript"></script>
-	<script src="webjars/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+	<%@ include file="common/footer.jspf" %>
 </body>
 
 </HTML>
