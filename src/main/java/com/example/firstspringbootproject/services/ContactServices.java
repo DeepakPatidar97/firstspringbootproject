@@ -3,6 +3,7 @@ package com.example.firstspringbootproject.services;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,10 @@ public class ContactServices {
 	
 	public void addContact(String name, String mobile, LocalDate date){
 		contacts.add(new Contact(++count, name, mobile, date));
+	}
+
+	public void deleteContact(Long id) {
+		Predicate<? super Contact> predicate =  contacts -> contacts.getId() == id;
+		contacts.removeIf(predicate );
 	}
 }
