@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <HTML>
 <head>
 <link href="webjars/bootstrap/5.3.2/css/bootstrap.min.css"
@@ -9,29 +9,43 @@
 <body>
 	<div class="container">
 		<h1>Enter Your Contact Details</h1>
-		<form:form method="post" action="update-contact" modelAttribute="contact">
+		<form:form method="post" action="update-contact"
+			modelAttribute="contact">
 			<div class="mb-3">
-				<label for="exampleInputName" class="form-label">Name </label> <form:input type="text" class="form-control" path="name"
-					id="exampleInputName" aria-describedby="emailHelp" required="required" />
+				<label for="exampleInputName" class="form-label">Name </label>
+				<form:input type="text" class="form-control" path="name"
+					id="exampleInputName" aria-describedby="emailHelp"
+					required="required" />
 				<div id="emailHelp" class="form-text">We'll never share your
 					datails with anyone else.</div>
 			</div>
+			
 			<div class="mb-3">
-				<label for="exampleInputNumber" class="form-label">Mobile Number </label> <form:input type="number" class="form-control" path="mobile"
-					id="exampleInputName" required="required"/><form:errors path="mobile" cssClass="text-warning"/>
+				<label for="exampleInputNumber" class="form-label">Mobile
+					Number </label>
+				<form:input type="number" class="form-control" path="mobile"
+					id="exampleInputName" required="required" />
+				<form:errors path="mobile" cssClass="text-warning" />
 			</div>
-			 <form:input type="hidden" class="form-control" path="date"
-					id="exampleInputName" />
+			
+			<div class="mb-3">
+				<label for="exampleInputDate" class="form-label">Date Of Birth
+					 </label>
+				<form:input type="date" class="form-control" path="date"
+					id="exampleInputDate" required="required" />
+			</div>
+			
 			<form:input type="hidden" class="form-control" path="id"
-					id="exampleInputName" />
-			
-			
+				id="exampleInputName" />
+
+
 			<!-- <div class="mb-3 form-check">
 				<input type="checkbox" class="form-check-input" id="exampleCheck1">
 				<label class="form-check-label" for="exampleCheck1">Check me
 					out</label>
 			</div> -->
-			<input type="submit" class="btn btn-primary"  /></button>
+			<input type="submit" class="btn btn-primary" />
+			</button>
 		</form:form>
 
 	</div>
