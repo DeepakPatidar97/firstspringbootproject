@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.firstspringbootproject.model.Contact;
 
+import jakarta.validation.Valid;
+
 
 @Service
 public class ContactServices {
@@ -40,5 +42,10 @@ public class ContactServices {
 	public Contact findById(Long id) {
 		Predicate<? super Contact> predicate =  contacts -> contacts.getId() == id;
 		return contacts.stream().filter(predicate).findFirst().get();
+	}
+
+	public void updateContact(@Valid Contact contact) {
+		deleteContact(contact.getId());
+		contacts.add(contact);		
 	}
 }

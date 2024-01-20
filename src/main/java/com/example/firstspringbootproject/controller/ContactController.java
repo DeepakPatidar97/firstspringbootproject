@@ -59,12 +59,12 @@ public class ContactController {
 	public String updateContactPage(ModelMap map, @RequestParam Long id) {
 		Contact contact = contactServices.findById(id);
 		map.put("contact", contact);
-		contactServices.deleteContact(id);
 		return "updateContact";
 	}
 	
-	@RequestMapping(value = "/update-contacts", method = RequestMethod.POST)
-	public void updateContact(ModelMap map, Contact contact, BindingResult bindingResult) {
-		addContact(contact, bindingResult);
+	@RequestMapping(value = "/update-contact", method = RequestMethod.POST)
+	public String updateContact(ModelMap map, Contact contact, BindingResult bindingResult) {
+		contactServices.updateContact(contact);
+		return "redirect:list-contacts";
 	}
 }

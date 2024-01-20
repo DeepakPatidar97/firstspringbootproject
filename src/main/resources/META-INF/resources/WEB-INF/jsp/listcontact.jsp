@@ -12,6 +12,7 @@
 		<table class="table">
 			<thead>
 				<tr>
+					<th>Id</th>
 					<th>Name</th>
 					<th>Number</th>
 					<th>DOB</th>
@@ -22,6 +23,7 @@
 			<tbody>
 				<c:forEach var="contact" items="${contacts}">
 					<tr>
+						<td>${contact.id}</td>
 						<td>${contact.name}</td>
 						<td>${contact.mobile}</td>
 						<td>${contact.date}</td>
