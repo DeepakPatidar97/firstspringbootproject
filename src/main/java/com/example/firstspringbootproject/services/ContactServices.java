@@ -27,7 +27,7 @@ public class ContactServices {
 		return contacts;
 	}
 	
-	public void addContact(Contact contact){
-		contacts.add(contact);
+	public void addContact(String name, String mobile, LocalDate date){
+		contacts.add(new Contact(++count, name, mobile, date));
 	}
 }
