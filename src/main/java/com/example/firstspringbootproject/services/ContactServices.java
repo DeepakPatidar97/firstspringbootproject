@@ -3,10 +3,13 @@ package com.example.firstspringbootproject.services;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Service;
 
 import com.example.firstspringbootproject.model.Contact;
+
+import jakarta.validation.Valid;
 
 
 @Service
@@ -27,7 +30,22 @@ public class ContactServices {
 		return contacts;
 	}
 	
-	public void addContact(Contact contact){
-		contacts.add(contact);
+	public void addContact(String name, String mobile, LocalDate date){
+		contacts.add(new Contact(++count, name, mobile, date));
+	}
+
+	public void deleteContact(Long id) {
+		Predicate<? super Contact> predicate =  contacts -> contacts.getId() == id;
+		contacts.removeIf(predicate );
+	}
+
+	public Contact findById(Long id) {
+		Predicate<? super Contact> predicate =  contacts -> contacts.getId() == id;
+		return contacts.stream().filter(predicate).findFirst().get();
+	}
+
+	public void updateContact(@Valid Contact contact) {
+		deleteContact(contact.getId());
+		contacts.add(contact);		
 	}
 }

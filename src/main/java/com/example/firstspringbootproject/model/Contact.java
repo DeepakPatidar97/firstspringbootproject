@@ -2,10 +2,14 @@ package com.example.firstspringbootproject.model;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.Size;
+
 public class Contact {
 
 	private long id;
 	private String name;
+	
+	@Size(min = 10,max = 10, message = "Enter 10 number")
 	private String mobile;
 	private LocalDate date;
 	
