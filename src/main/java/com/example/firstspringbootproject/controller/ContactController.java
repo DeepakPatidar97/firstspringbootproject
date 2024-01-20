@@ -54,4 +54,17 @@ public class ContactController {
 		contactServices.deleteContact(id);
 		return "redirect:list-contacts";
 	}
+	
+	@RequestMapping(value = "/update-contact", method = RequestMethod.GET)
+	public String updateContactPage(ModelMap map, @RequestParam Long id) {
+		Contact contact = contactServices.findById(id);
+		map.put("contact", contact);
+		contactServices.deleteContact(id);
+		return "updateContact";
+	}
+	
+	@RequestMapping(value = "/update-contacts", method = RequestMethod.POST)
+	public void updateContact(ModelMap map, Contact contact, BindingResult bindingResult) {
+		addContact(contact, bindingResult);
+	}
 }

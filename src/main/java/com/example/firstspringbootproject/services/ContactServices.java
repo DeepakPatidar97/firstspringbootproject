@@ -36,4 +36,9 @@ public class ContactServices {
 		Predicate<? super Contact> predicate =  contacts -> contacts.getId() == id;
 		contacts.removeIf(predicate );
 	}
+
+	public Contact findById(Long id) {
+		Predicate<? super Contact> predicate =  contacts -> contacts.getId() == id;
+		return contacts.stream().filter(predicate).findFirst().get();
+	}
 }

@@ -25,9 +25,10 @@
 						<td>${contact.name}</td>
 						<td>${contact.mobile}</td>
 						<td>${contact.date}</td>
-						<td> <a
-							href="/delete-contact?id=${contact.id}" class="btn btn-danger">Delete</a></td>
-						<td>${contact.date}</td>
+						<td><a href="/delete-contact?id=${contact.id}"
+							class="btn btn-warning">Delete</a></td>
+						<td><a href="/update-contact?id=${contact.id}"
+							class="btn btn-success">Update</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
