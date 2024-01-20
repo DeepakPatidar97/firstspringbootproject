@@ -45,7 +45,7 @@ public class ContactController {
 		if(bindingResult.hasErrors()) {
 			return "addContact";
 		}
-		contactServices.addContact(contact.getName(), contact.getMobile(), LocalDate.now().plusYears(1));
+		contactServices.addContact(contact.getName(), contact.getMobile(), contact.getDate());
 		return "redirect:list-contacts";
 	}
 	
