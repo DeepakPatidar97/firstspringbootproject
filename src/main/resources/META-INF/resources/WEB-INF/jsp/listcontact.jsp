@@ -30,6 +30,3 @@
 		</table>
 	<a href="/add-contacts" class="btn btn-success">Add Contact</a>
 <%@ include file="common/footer.jspf" %>
-</body>
-
-</HTML>

@@ -6,5 +6,3 @@
 		
 	</div>
 	<%@ include file="common/footer.jspf" %>
-</body>
-</HTML>

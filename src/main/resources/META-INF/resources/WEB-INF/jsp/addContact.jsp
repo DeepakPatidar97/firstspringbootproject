@@ -46,12 +46,10 @@
 	</div>
 
 
-<%@ include file="common/footer.jspf" %>
+
 	<script type="text/javascript">
 		$('#date').datepicker({
 			format : 'yyyy-mm-dd'
 		});
 	</script>
-</body>
-
-</HTML>
+<%@ include file="common/footer.jspf" %>
