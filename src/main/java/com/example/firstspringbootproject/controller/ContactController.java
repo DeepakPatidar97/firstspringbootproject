@@ -29,23 +29,23 @@ public class ContactController {
 
 	@RequestMapping(value = "/list-contacts", method = RequestMethod.GET)
 	public String listAllContact(ModelMap map) {
-		map.put("contacts", contactServices.getAllContacts());
+		map.put("contacts", contactServices.findByUserName((String)map.get("username")));
 		return "listcontact";
 	}
 	
 	@RequestMapping(value = "/add-contacts", method = RequestMethod.GET)
 	public String addContactPage(ModelMap map) {
-		Contact contact = new Contact(0,null,null,null);
+		Contact contact = new Contact(0,null,null,null,null);
 		map.put("contact", contact);
 		return "addContact";
 	}
 	
 	@RequestMapping(value = "/add-contacts", method = RequestMethod.POST)
-	public String addContact(@ModelAttribute("contact") @Valid Contact contact, BindingResult bindingResult) {
+	public String addContact(@ModelAttribute("contact") @Valid Contact contact, BindingResult bindingResult, ModelMap map) {
 		if(bindingResult.hasErrors()) {
 			return "addContact";
 		}
-		contactServices.addContact(contact.getName(), contact.getMobile(), contact.getDate());
+		contactServices.addContact(contact.getName(), contact.getMobile(), contact.getDate(),(String)map.get("username"));
 		return "redirect:list-contacts";
 	}
 	

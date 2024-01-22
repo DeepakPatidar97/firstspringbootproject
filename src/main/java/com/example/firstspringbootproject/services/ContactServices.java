@@ -20,18 +20,20 @@ public class ContactServices {
 	public static int count = 0;
 	
 	static {
-		contacts.add(new Contact(++count, "Deepak Patidar", "8109240892", LocalDate.now().plusYears(1)));
-		contacts.add(new Contact(++count, "Priya Patidar", "9165758221", LocalDate.now().plusYears(1)));
-		contacts.add(new Contact(++count, "Pooja Patidar", "7987925004", LocalDate.now().plusYears(1)));
-		contacts.add(new Contact(++count, "Narmada Patidar", "9926048922", LocalDate.now().plusYears(1)));
+		contacts.add(new Contact(++count, "Deepak Patidar", "8109240892", LocalDate.now().plusYears(1),"Deepak97"));
+		contacts.add(new Contact(++count, "Priya Patidar", "9165758221", LocalDate.now().plusYears(1),"Deepak97"));
+		contacts.add(new Contact(++count, "Pooja Patidar", "7987925004", LocalDate.now().plusYears(1),"Priya96"));
+		contacts.add(new Contact(++count, "Narmada Patidar", "9926048922", LocalDate.now().plusYears(1),"Deepak97"));
 	}
 	
-	public List<Contact> getAllContacts(){
-		return contacts;
+	public List<Contact> findByUserName(String username){
+		Predicate<? super Contact> predicate =  contacts -> contacts.getUsername().equalsIgnoreCase(username);
+		
+		return contacts.stream().filter(predicate).toList();
 	}
 	
-	public void addContact(String name, String mobile, LocalDate date){
-		contacts.add(new Contact(++count, name, mobile, date));
+	public void addContact(String name, String mobile, LocalDate date, String username){
+		contacts.add(new Contact(++count, name, mobile, date, username));
 	}
 
 	public void deleteContact(Long id) {
