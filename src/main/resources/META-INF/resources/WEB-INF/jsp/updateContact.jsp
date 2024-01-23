@@ -31,7 +31,8 @@
 			
 			<form:input type="hidden" class="form-control" path="id"
 				id="exampleInputName" />
-
+			<form:input type="hidden" class="form-control" path="username"
+					/>
 
 			<!-- <div class="mb-3 form-check">
 				<input type="checkbox" class="form-check-input" id="exampleCheck1">

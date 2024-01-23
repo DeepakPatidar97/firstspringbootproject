@@ -2,50 +2,45 @@ package com.example.firstspringbootproject.services;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.firstspringbootproject.model.Contact;
+import com.example.firstspringbootproject.repositary.ContactRepositary;
 
 import jakarta.validation.Valid;
 
 
 @Service
 public class ContactServices {
+
+	@Autowired
+	public ContactRepositary contactRepositary;
 	
-	public static List<Contact> contacts = new ArrayList<>();
-	
-	public static int count = 0;
-	
-	static {
-		contacts.add(new Contact(++count, "Deepak Patidar", "8109240892", LocalDate.now().plusYears(1)));
-		contacts.add(new Contact(++count, "Priya Patidar", "9165758221", LocalDate.now().plusYears(1)));
-		contacts.add(new Contact(++count, "Pooja Patidar", "7987925004", LocalDate.now().plusYears(1)));
-		contacts.add(new Contact(++count, "Narmada Patidar", "9926048922", LocalDate.now().plusYears(1)));
+	public List<Contact> findByUsername(String username){
+		return contactRepositary.findByUsername(username);
 	}
 	
-	public List<Contact> getAllContacts(){
-		return contacts;
-	}
-	
-	public void addContact(String name, String mobile, LocalDate date){
-		contacts.add(new Contact(++count, name, mobile, date));
+	public void addContact(Contact contact){
+		System.out.println(contact);
+		contactRepositary.save(contact);
 	}
 
-	public void deleteContact(Long id) {
-		Predicate<? super Contact> predicate =  contacts -> contacts.getId() == id;
-		contacts.removeIf(predicate );
+	public void deleteById(Long id) {
+		contactRepositary.deleteById(id);
 	}
 
-	public Contact findById(Long id) {
-		Predicate<? super Contact> predicate =  contacts -> contacts.getId() == id;
-		return contacts.stream().filter(predicate).findFirst().get();
+	public Optional<Contact> findById(Long id) {
+		return contactRepositary.findById(id);
 	}
 
 	public void updateContact(@Valid Contact contact) {
-		deleteContact(contact.getId());
-		contacts.add(contact);		
+		deleteById(contact.getId());
+		contactRepositary.save(contact);		
 	}
 }
