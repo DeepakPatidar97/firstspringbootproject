@@ -24,47 +24,51 @@ import jakarta.validation.Valid;
 @SessionAttributes("username")
 public class ContactController {
 	
-	@Autowired
-	public ContactServices contactServices;
-
-	@RequestMapping(value = "/list-contacts", method = RequestMethod.GET)
-	public String listAllContact(ModelMap map) {
-		map.put("contacts", contactServices.findByUserName((String)map.get("username")));
-		return "listcontact";
-	}
-	
-	@RequestMapping(value = "/add-contacts", method = RequestMethod.GET)
-	public String addContactPage(ModelMap map) {
-		Contact contact = new Contact(0,null,null,null,null);
-		map.put("contact", contact);
-		return "addContact";
-	}
-	
-	@RequestMapping(value = "/add-contacts", method = RequestMethod.POST)
-	public String addContact(@ModelAttribute("contact") @Valid Contact contact, BindingResult bindingResult, ModelMap map) {
-		if(bindingResult.hasErrors()) {
-			return "addContact";
-		}
-		contactServices.addContact(contact.getName(), contact.getMobile(), contact.getDate(),(String)map.get("username"));
-		return "redirect:list-contacts";
-	}
-	
-	@RequestMapping(value = "/delete-contact", method = RequestMethod.GET)
-	public String deleteContact(@RequestParam Long id) {
-		contactServices.deleteContact(id);
-		return "redirect:list-contacts";
-	}
-	
-	@RequestMapping(value = "/update-contact", method = RequestMethod.GET)
-	public String updateContactPage(ModelMap map, @RequestParam Long id) {
-		Contact contact = contactServices.findById(id);
-		map.put("contact", contact);
-		return "updateContact";
-	}
-	
-	@RequestMapping(value = "/update-contact", method = RequestMethod.POST)
-	public String updateContact(ModelMap map, Contact contact, BindingResult bindingResult) {
-		contactServices.updateContact(contact);
-		return "redirect:list-contacts";
-	}
+//	@Autowired
+//	public ContactServices contactServices;
+//
+//	@RequestMapping(value = "/list-contacts", method = RequestMethod.GET)
+//	public String listAllContact(ModelMap map) {
+//		map.put("contacts", contactServices.findByUserName(getUsername(map)));
+//		return "listcontact";
+//	}
+//	
+//	private String getUsername(ModelMap map) {
+//		return (String)map.get("username");
+//	}
+//	
+//	@RequestMapping(value = "/add-contacts", method = RequestMethod.GET)
+//	public String addContactPage(ModelMap map) {
+//		Contact contact = new Contact(0,null,null,null,null);
+//		map.put("contact", contact);
+//		return "addContact";
+//	}
+//	
+//	@RequestMapping(value = "/add-contacts", method = RequestMethod.POST)
+//	public String addContact(@ModelAttribute("contact") @Valid Contact contact, BindingResult bindingResult, ModelMap map) {
+//		if(bindingResult.hasErrors()) {
+//			return "addContact";
+//		}
+//		contactServices.addContact(contact.getName(), contact.getMobile(), contact.getDate(),getUsername(map));
+//		return "redirect:list-contacts";
+//	}
+//	
+//	@RequestMapping(value = "/delete-contact", method = RequestMethod.GET)
+//	public String deleteContact(@RequestParam Long id) {
+//		contactServices.deleteContact(id);
+//		return "redirect:list-contacts";
+//	}
+//	
+//	@RequestMapping(value = "/update-contact", method = RequestMethod.GET)
+//	public String updateContactPage(ModelMap map, @RequestParam Long id) {
+//		Contact contact = contactServices.findById(id);
+//		map.put("contact", contact);
+//		return "updateContact";
+//	}
+//	
+//	@RequestMapping(value = "/update-contact", method = RequestMethod.POST)
+//	public String updateContact(ModelMap map, Contact contact, BindingResult bindingResult) {
+//		contactServices.updateContact(contact);
+//		return "redirect:list-contacts";
+//	}
 }

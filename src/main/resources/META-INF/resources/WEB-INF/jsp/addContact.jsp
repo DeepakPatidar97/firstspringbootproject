@@ -28,7 +28,10 @@
 					id="exampleInputName" required="required" />
 			</div>
 
-
+			
+			<form:input type="hidden" class="form-control" path="username"
+					/>
+			
 			<!-- <div class="mb-3">
 				<label for="exampleInputNumber" class="form-label">Date of birth </label> <input type="date" class="form-control" name="date"
 					id="exampleInputName">

@@ -2,10 +2,17 @@ package com.example.firstspringbootproject.model;
 
 import java.time.LocalDate;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Size;
 
+@Entity
 public class Contact {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
 	
@@ -22,6 +29,17 @@ public class Contact {
 	public Contact(long id, String name, String mobile, LocalDate date, String username) {
 		super();
 		this.id = id;
+		this.name = name;
+		this.mobile = mobile;
+		this.date = date;
+		this.username = username;
+	}
+	
+	
+	
+	public Contact(String name, @Size(min = 10, max = 10, message = "Enter 10 number") String mobile, LocalDate date,
+			String username) {
+		super();
 		this.name = name;
 		this.mobile = mobile;
 		this.date = date;
