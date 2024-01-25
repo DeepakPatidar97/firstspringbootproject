@@ -1,13 +1,10 @@
 package com.example.firstspringbootproject.services;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import com.example.firstspringbootproject.model.Contact;
@@ -26,7 +23,7 @@ public class ContactServices {
 		return contactRepositary.findByUsername(username);
 	}
 	
-	public void addContact(Contact contact){
+	public void addContact(@NonNull Contact contact){
 		System.out.println(contact);
 		contactRepositary.save(contact);
 	}
@@ -39,8 +36,7 @@ public class ContactServices {
 		return contactRepositary.findById(id);
 	}
 
-	public void updateContact(@Valid Contact contact) {
-		deleteById(contact.getId());
+	public void updateContact(@Valid @NonNull Contact contact) {
 		contactRepositary.save(contact);		
 	}
 }
